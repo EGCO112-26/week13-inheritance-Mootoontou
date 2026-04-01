@@ -7,51 +7,22 @@ LL::LL()
 }
 
 LL::~LL(){
-    while (head) {
-        if (!head->next) {
-            delete head;
-            head = nullptr;
-            break;
-        }
-        Node* prev = nullptr;
-        Node* current = head;
-        while (current->next) {
-            prev = current;
-            current = current->next;
-        }
-        prev->next = nullptr;
+    Node* current = head;
+    while (current) {
+        Node* next = current->next;
         delete current;
+        current = next;
     }
 }
 
 void LL::add(Node* node){
     if (!node) return;
-    node->next = nullptr;
-    if (!head) {
-        head = node;
-        return;
-    }
-    Node* tail = head;
-    while (tail->next) {
-        tail = tail->next;
-    }
-    tail->next = node;
+    node->next = head;
+    head = node;
 }
 
 void LL::show_all() const{
-    if (!head) {
-        return;
-    }
-
-    std::cout << "         " << std::endl << std::endl;
-
-    if (head->getData() == 12) {
-        std::cout << " Node data:221" << std::endl;
-    } else {
-        head->display();
-    }
-
-    Node* current = head->next;
+    Node* current = head;
     while (current) {
         current->display();
         current = current->next;
