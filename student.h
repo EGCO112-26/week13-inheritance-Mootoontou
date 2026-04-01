@@ -1,29 +1,30 @@
+#pragma once
+
 #include "MU_Person.h"
+#include <string>
 
-
-class student:public MU_person{
+class student : public MU_person {
 private:
-          double gpa; 
-	
+    double gpa;
+
 public:
-    student(long=111 ,double=2.5,string="Nattawut");
-    ~student();
-    void display(); // display_person
-   
+    student(long id = 111, double gpa = 2.5, std::string name = "Nattawut", long nat_id = 0);
+    virtual ~student();
+    void display() const override;
 };
 
-student::student(long i, double g,string s){
-// Finish constructor to set all values
-         cout<<"MU student constructor  "<<gpa<<endl;
-         
-  
-}
-student::~student(){
-     cout<<"-------"<<endl;
-     cout<<"student destructor "<<gpa<<endl; 
+inline student::student(long id, double g, std::string name, long nat_id)
+    : MU_person(id, name, nat_id), gpa(g)
+{
+    std::cout << "student constructor " << gpa << std::endl;
 }
 
+inline student::~student(){
+    std::cout << "student destructor " << gpa << std::endl;
+}
 
-void student::display(){
-  //Finish Display function
+inline void student::display() const{
+    std::cout << "Student info" << std::endl;
+    MU_person::display();
+    std::cout << "GPA: " << gpa << std::endl;
 }
