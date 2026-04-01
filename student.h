@@ -16,15 +16,12 @@ public:
 inline student::student(long id, double g, std::string name, long nat_id)
     : MU_person(id, name, nat_id), gpa(g)
 {
-    std::cout << "student constructor " << gpa << std::endl;
+    std::cout << "MU student constructor  " << gpa << std::endl;
 }
 
 inline student::~student(){
-    std::cout << "student destructor " << gpa << std::endl;
 }
 
 inline void student::display() const{
-    std::cout << "Student info" << std::endl;
-    MU_person::display();
-    std::cout << "GPA: " << gpa << std::endl;
+    Node::display();
 }

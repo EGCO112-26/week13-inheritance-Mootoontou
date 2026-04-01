@@ -8,4 +8,3 @@ LL_test: LL_test.cpp LL.cpp Node.cpp
 
 clean:
 	rm -f inh LL_test
-	g++ main.cpp LL.cpp -o inh
